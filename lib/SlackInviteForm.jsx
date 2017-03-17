@@ -1,5 +1,6 @@
 const React = require('react');
 const request = require('superagent');
+const style = require('./style.scss');
 
 const INVITATION_STATUS = {
   UNSENT:  'unsent',  // 未送信
@@ -39,8 +40,12 @@ class SlackInviteForm extends React.Component {
       ? <p className="success">招待メールを送信しました！</p> : null;
     const errorMsg = this.getErrorMessage();
     const Error = errorMsg ? <p className="error">{errorMsg}</p> : null;
+    const classes = [
+      style.slack_invite_form,
+      'status_' + this.state.invitation_status,
+    ];
     return (
-      <div className={'invitation_'+this.state.invitation_status}>
+      <div className={classes.join(' ')}>
         <form onSubmit={this.onSubmit.bind(this)}>
           <label htmlFor="email"></label>
           <input type="text" name="email" id="email" placeholder="you@yourdomain.com" ref="email" />
@@ -91,7 +96,7 @@ class SlackInviteForm extends React.Component {
   // １秒後にフォームを入力可能な状態に戻す
   handleError(msg) {
     this.setState({ invitation_status: INVITATION_STATUS.ERROR, error: msg });
-    console.warn(msg); /* eslint no-console: off */
+    console.warn(msg); // eslint-disable-line no-console
     setTimeout(() => this.setState({ invitation_status: INVITATION_STATUS.UNSENT }), 1000);
   }
 
