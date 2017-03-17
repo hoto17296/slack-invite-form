@@ -1,0 +1,28 @@
+{
+  "name": "slack-invite-form",
+  "version": "0.0.0",
+  "description": "",
+  "author": "hoto17296",
+  "main": "lib/SlackInviteForm.jsx",
+  "repository": "hoto17296/slack-invite-form",
+  "scripts": {
+    "build": "webpack -p --progress",
+    "start": "webpack-dev-server --hot --content-base=development",
+    "test": "mocha",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "eslint": "^3.17.1",
+    "eslint-loader": "^1.6.3",
+    "eslint-plugin-react": "^6.10.0",
+    "mocha": "^3.2.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
